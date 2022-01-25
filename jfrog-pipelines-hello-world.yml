@@ -78,5 +78,6 @@ pipelines:
             - name: myPropertyBag
         execution:
           onExecute:
+            - sleep 2m
             # Retrieves the commitSha from input resource
             - echo "CommitSha is $res_myPropertyBag_commitSha"
