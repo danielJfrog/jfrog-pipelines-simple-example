@@ -46,8 +46,13 @@ pipelines:
             # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
             - name: myFirstRepo2
+          custom:
+            name: docker.jfrog.io/installer/jenkins-agent-docker-installer
+            tag: 19.03.8-ce-9-2
         execution:
           onStart:
+            - add_run_variables commitSha12=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha13=$res_myFirstRepo_commitSha
             - |
               if [[ "${SKIP_HELM_BUILD}" == "YES" ]]; then
                 echo "Helm chart build is disabled. Skipping"
@@ -83,6 +88,8 @@ pipelines:
             - name: p1_s1
         execution:
           onExecute:
+            - - add_run_variables commitSha100=$res_myFirstRepo_commitSha
+              - add_run_variables commitSha101=$res_myFirstRepo_commitSha
             # Demonstrates the availability of an env variable written to run state during p1_s1
             - echo $current_runid
 
