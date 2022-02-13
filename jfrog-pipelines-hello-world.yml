@@ -31,8 +31,10 @@ pipelines:
       - name: p1_s1
         type: Bash
         configuration:
-          environmentVariables:
-            SKIP_GLOBAL_TEARDOWN: "true"
+        environmentVariables:
+          readOnly:
+            UTP_DEPLOYMENT_INCOMING_WEBHOOK_NAME:
+              default: utp_deployment_incoming_webhook_jfconnect
           inputResources:
             # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
