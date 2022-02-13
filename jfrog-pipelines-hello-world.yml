@@ -25,7 +25,7 @@ pipelines:
       environmentVariables:
         readOnly:
           UTP_DEPLOYMENT_INCOMING_WEBHOOK_NAME:
-            default: true
+            default: 1
     steps:
       - name: p1_s1
         type: Bash
