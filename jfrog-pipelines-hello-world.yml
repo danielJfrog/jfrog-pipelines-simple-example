@@ -34,7 +34,7 @@ pipelines:
         environmentVariables:
           readOnly:
             UTP_DEPLOYMENT_INCOMING_WEBHOOK_NAME:
-              default: utp_deployment_incoming_webhook_jfconnect
+              default: utp_deployment_incoming_webhook_jfconnect1
           inputResources:
             # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
