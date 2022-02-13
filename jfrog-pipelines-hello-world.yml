@@ -117,6 +117,7 @@ pipelines:
             - name: myPropertyBag
         execution:
           onExecute:
+            - add_pipeline_variables prev_runid22=$run_id
             - sleep 30m
             # Retrieves the commitSha from input resource
             - echo "CommitSha is $res_myPropertyBag_commitSha"
