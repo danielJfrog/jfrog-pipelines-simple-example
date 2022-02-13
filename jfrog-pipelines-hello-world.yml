@@ -21,6 +21,12 @@ resources:
 
 pipelines:
   - name: my_first_pipeline
+    configuration:
+      environmentVariables:
+        readOnly:
+          #configs info
+          #set this removeConfFile env to true to delete the Conf.json file
+          removeConfFile: "false"
     steps:
       - name: p1_s1
         type: Bash
