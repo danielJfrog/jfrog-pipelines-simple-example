@@ -37,6 +37,7 @@ pipelines:
         readOnly:
           UTP_DEPLOYMENT_INCOMING_WEBHOOK_NAME:
             default: 1
+          SKIP_HELM_BUILD: 'YES'
     steps:
       - name: p1_s1
         type: Bash
@@ -46,7 +47,16 @@ pipelines:
             - name: myFirstRepo
             - name: myFirstRepo2
         execution:
+          onStart:
+            - |
+              if [[ "${SKIP_HELM_BUILD}" == "YES" ]]; then
+                echo "Helm chart build is disabled. Skipping"
+              fi
           onExecute:
+            - |
+              if [[ "${SKIP_HELM_BUILD}" == "YES" ]]; then
+                echo "Helm chart build is disabled. Skipping"
+              fi
             # Data from input resources is available as env variables in the step
             - echo $res_myFirstRepo_commitSha
             # The next two commands add variables to run state, which is available to all downstream steps in this run
