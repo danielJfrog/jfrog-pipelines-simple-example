@@ -36,6 +36,11 @@ pipelines:
             # Run state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-RunState
             - add_run_variables current_runid=$run_id
             - add_run_variables commitSha=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha2=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha3=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha4=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha5=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha6=$res_myFirstRepo_commitSha
             # This variable is written to pipeline state in p1_s3.
             # So this will be empty during first run and will be set to prior run number in subsequent runs
             # Pipeline state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-PipelineState
