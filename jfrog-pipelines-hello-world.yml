@@ -85,8 +85,8 @@ pipelines:
             - name: p1_s1
         execution:
           onExecute:
-              - add_run_variables commitSha100=$res_myFirstRepo_commitSha
-              - add_run_variables commitSha101=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha100=$res_myFirstRepo_commitSha
+            - add_run_variables commitSha101=$res_myFirstRepo_commitSha
             # Demonstrates the availability of an env variable written to run state during p1_s1
             - echo $current_runid
 
