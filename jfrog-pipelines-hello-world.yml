@@ -55,9 +55,6 @@ pipelines:
                 echo "Helm chart build is disabled. Skipping"
               fi
           onExecute:
-              custom:
-                name: docker.jfrog.io/installer/jenkins-agent-docker-installer
-                tag: 19.03.8-ce-9-2
             - |
               if [[ "${SKIP_HELM_BUILD}" == "YES" ]]; then
                 echo "Helm chart build is disabled. Skipping"
