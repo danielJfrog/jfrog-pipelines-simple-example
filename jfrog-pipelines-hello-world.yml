@@ -13,6 +13,17 @@ resources:
         # Specifies which branches will trigger dependent steps
         include: master
 
+  - name: myFirstRepo2
+    type: GitRepo
+    configuration:
+      # SCM integration where the repository is located
+      gitProvider: {{ .Values.myRepo.gitProvider }} # this will be replaced from values.yml
+      # Repository path, including org name/repo name
+      path: {{ .Values.myRepo.path }} # this will be replaced from values.yml
+      branches:
+        # Specifies which branches will trigger dependent steps
+        include: master1
+
   - name: myPropertyBag
     type: PropertyBag
     configuration:
@@ -33,6 +44,7 @@ pipelines:
           inputResources:
             # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
+            - name: myFirstRepo2
         execution:
           onExecute:
             # Data from input resources is available as env variables in the step
@@ -54,6 +66,9 @@ pipelines:
       - name: p1_s2
         type: Bash
         configuration:
+          inputResources:
+            # Sets up step to be triggered when there are commit events to myFirstRepo
+            - name: myFirstRepo
           inputSteps:
             - name: p1_s1
         execution:
